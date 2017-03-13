@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<script src="./bower_components/angular/angular.js"></script>
+	<script src="./commande.js"></script>
+	
+	<style>
+		.gros-montant {
+			font-weight: bolder;
+		}
+	</style>
+<title>commande</title>
+</head>
+<body>
+<div ng-controller="commandeCtrl">
+	<table>
+		<thead>
+			<tr>
+				<th>Référence</th>
+				<th>Libellé</th>
+				<th>Prix unitaire HT</th>
+				<th>Quantité</th>
+				<th>Montant HT</th>
+				<th>Montant TTC</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="ligne in lignes" ng-class="{'gros-montant' : isGrosMontant(ligne)}">
+			<td>{{ligne.ref}}</td>
+			<td>{{ligne.libelle}}</td>
+			<td>{{ligne.pu | currency}}</td>
+			<td>
+				<input type="text" ng-model="ligne.qte" placeholder="ligne.qte">				
+			</td>
+			<td>{{getHT(ligne) | currency}}</td>
+			<td>{{getTTC(ligne) | currency}}</td>
+			<td>
+				<input type="button" value ="Supprimer" ng-click="supLigne(ligne)">
+			</td>
+			</tr>
+			
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>{{getTotalHT() | currency}}</td>
+			<td>{{getTotalTTC() | currency}}</td>
+		</tr>
+		</tbody>
+	</table>
+	
+<!-- 	<form ng-submit="addLigne(ligneToAdd)">
+		<input type="text" ng-model="ligneToAdd.ref" name="ref" placeholder="ref"><br/>
+		<input type="text" ng-model="ligneToAdd.libelle" name="libelle" placeholder="libellé"><br/>
+		<input type="text" ng-model="ligneToAdd.qte" name="qte" placeholder="quantité"><br/>
+		<input type="text" ng-model="ligneToAdd.pu" name="pu" placeholder="prix unitaire"><br/>
+		<input type="submit" value="Ajouter">
+	</form> -->
+	<form ng-submit="addLigne2(ligneToAdd)">
+		<select ng-model="ligneToAdd.elt"
+				ng-options="livre.title for livre in catalog">
+		</select>
+		<input type="text" ng-model="ligneToAdd.qte" name="qte" placeholder="quantité"><br/>
+		<input type="submit" value="Ajout">
+	</form>
+	<pre>{{catalog | json}}</pre>
+</div>
+</body>
+</html>

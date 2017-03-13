@@ -1,0 +1,10 @@
+COMMANDE
+<table>
+	<tr ng-repeat="ligne in commande">
+		<td>{{ligne.item.title}}</td>
+		<td>{{ligne.item.price}}</td>
+		<td>
+			<input type="number" ng-model="ligne.qte">
+		</td>				
+	</tr>
+</table>

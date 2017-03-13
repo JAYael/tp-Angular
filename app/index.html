@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+  <meta charset="utf-8">
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  
+  <script src="app.js"></script>
+  
+  <script src="view-catalog/catalog.js"></script>
+  <script src="view-catalog/catalogService.js"></script>
+  
+  <script src="view-book/book.js"></script>
+  
+  <script src="view-commande/commande.js"></script>
+  <script src="view-commande/controller.js"></script>
+  <script src="view-commande/service.js"></script>
+  <title ng-bind="title"></title>
+</head>
+<body>
+<span ng-bind="getPanierServiceSize()">panier</span>
+<div >
+  <ul class="menu">
+    <li><a href="#/catalog">catalog</a></li>
+    <li><a href="#/book">book</a></li>
+    <li><a href="#/commande">panier</a></li>
+  </ul>
+
+
+  <div ng-view></div>
+
+</div>
+</body>
+</html>
