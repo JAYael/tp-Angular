@@ -1,32 +1,36 @@
 <div>
-	<input type="text" placeholder="text de recherche" ng-model="recherche">
-	<input type="number" placeholder="min" ng-model="prixMin">
-	<input type="number" placeholder="max" 
-	ng-model="prixMax"
-	ng-model-options="{ updateOn: 'blur' }">
-	<table>
-		<thead>
-			<tr>
-				<th>R�f�rence</th>
-				<th>Libell�</th>
-				<th>Prix unitaire HT</th>
-				<th>Image HT</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="livre in catalog | filter : {title:recherche} |interval:prixMin:prixMax" ng-class="{'gros-montant' : isGrosMontant(ligne)}">
-				<td>{{livre['ISBN-13']}}</td>
-				<td>{{livre.title }}</td>
-				<td>{{livre.price | currency}}</td>
-				<td>
-					<a ng-href="#/book/{{livre['_id'].$oid}}">
-						<img ng-src={{livre.img}} alt = "no img"/>
-					</a>
-				</td>
-				<td>
-					<button ng-click="ajoute(livre)">+</button>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+    <input type="text" placeholder="text de recherche" ng-model="recherche">
+    <input type="number" placeholder="min" ng-model="prixMin">
+    <input type="number" placeholder="max" 
+           ng-model="prixMax"
+           ng-model-options="{updateOn: 'blur'}">
+    <table>
+        <thead>
+            <tr>
+                <th>Référence</th>
+                <th>Libellé</th>
+                <th>Note</th>
+                <th>Prix unitaire HT</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="livre in catalog| filter : {title:recherche} |interval:prixMin:prixMax" ng-class="{'gros-montant' : isGrosMontant(ligne)}">
+                <td>{{livre['ISBN-13']}}</td>
+                <td>{{livre.title}}</td>
+                <td>
+                    <span rating=livre.rating></span>
+                </td>
+                <td>{{livre.price| currency}}</td>
+                <td>
+                    <a ng-href="#/book/{{livre['_id'].$oid}}">
+                        <img ng-src={{livre.img}} alt = "no img"/>
+                    </a>
+                </td>
+                <td>
+                    <button ng-click="ajoute(livre)">+</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>

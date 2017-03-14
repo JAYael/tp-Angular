@@ -1,0 +1,10 @@
+<h1>Formulaire dynamique</h1>
+
+<form name="form">
+    <div ng-repeat="field in form.fields">
+        <label for=field.property>{{field.label}}</label>
+        <input type="{{field.type}}" name=field.property id=field.property><br>
+    </div>
+</form>
+
+<pre>{{form.fields|json}}</pre>

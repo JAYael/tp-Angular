@@ -1,9 +1,10 @@
 
 <div>
-<h1>{{book.title}}</h1>
-<img ng-src={{book.img}} alt = "no img"/>
-<p>Auteur:</p>
-{{book.author}}
-<span ng-bind-html="Message"></span>
+    <h1>{{book.title}}</h1>
+    <img ng-src={{book.img}} alt = "no img"/>
+    <p>Auteur:</p>
+    {{book.author}}
+    <span ng-bind-html="Message"></span>
+    <span rating=book.rating></span>
 </div>
 <pre>{{book | json}}</pre>
